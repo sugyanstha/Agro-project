@@ -1,0 +1,49 @@
+.container {
+    max-width: 500px;
+    margin: 70px auto;
+    padding: 20px;
+    height: max-content;
+  }
+  
+  #right {
+    background-color: #f1f1f1;
+    
+  }
+  
+  #right h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom : 20px;
+    
+  }
+  
+  #right label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    
+  }
+  
+  #right input[type="text"],
+  #right input[type="submit"] {
+    width: -webkit-fill-available;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #right input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  #right input[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+  
+  #right input[type="hidden"] {
+    display: none;
+  }
+  
