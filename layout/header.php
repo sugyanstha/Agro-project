@@ -12,7 +12,7 @@
 <body>
     <div id="header">
         <div id="logo">
-            <img src="img/logo.jpg" alt="">
+            <!-- <img src="img/logo.jpg" alt=""> -->
         </div>
         <div id="banner"> Welcome to AGROCOUNCIL </div>
         <div id="profile">

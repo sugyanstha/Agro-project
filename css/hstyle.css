@@ -5,7 +5,7 @@
 .header{
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgb(4,9,30,0.7), 
+    background-image: linear-gradient(#55a2d6, 
     rgba(4,9,30,0.7));
     background-position: center;
     background-size: cover;
@@ -18,7 +18,8 @@ nav{
     align-items: center;
 }
 nav img{
-    width: 150px;
+    width: 100px;
+    height: 50px;
 }
 .nav-links{
     flex: 1;
@@ -28,7 +29,7 @@ nav img{
     list-style: none;
     display: inline-block;
     padding: 8px 12px;
-    position: relative;
+    position: relative; 
 }
 .nav-links ul li a{
     color: #fff;
@@ -154,9 +155,59 @@ p{
     width: 100%;
     text-align: center;
     padding: 30px 0;
+    background-color: #f2f2f2;
 }
 .footer h4{
     margin-bottom: 25px;
     margin-top: 20px;
     font-weight: 600; 
+}
+
+/* CSS for aboutus page */
+.sub-header{
+    height: 50vh;
+    width: 100%;
+    background-image: linear-gradient(#55a2d6, 
+    rgba(4,9,30,0.7));
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+}
+
+.sub-header h1{
+    margin-top: 100px;
+}
+
+.abt-us{
+    width: 80%;
+    margin: auto;
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+
+.abt-col{
+        flex-basis: 48%;
+        padding: 30px 12px;
+}
+.abt-col img{
+    width: 100%;
+}
+
+.abt-col h1{
+    padding-top: 0;
+}
+
+.abt-col p{
+    padding: 15px 0 25px;
+}
+
+.r-btn{
+    border: 1px solid #f44336;
+    background: transparent;
+    color: #f44336;
+}
+
+.r-btn:hover{
+    color: #fff;
 }

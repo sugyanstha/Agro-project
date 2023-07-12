@@ -9,11 +9,11 @@
 <body>
     <section class="header">
        <nav>
-        <!-- <a href="index.html"><img src="C:\Users\DELL\Downloads\logo.png" alt=""></a> -->
+        <a href="index.php"><img src="img\logoo.png" alt=""></a>
         <div class="nav-links">
             <ul>
-                <li><a href="">HOME</a></li>
-                <li><a href="">ABOUT US</a></li>
+                <li><a href="index.php">HOME</a></li>
+                <li><a href="aboutus.php">ABOUT US</a></li>
                 <li><a href="">FAQ</a></li>
                 <li><a href="">CONTACT US</a></li>
                 <li><a href="login.php">LOGIN</a></li>
