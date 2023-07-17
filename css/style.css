@@ -91,26 +91,26 @@ body{
 
 
 /* Styles for the right container */
-#right {
-    text-align: center;
+/* #right { */
+    /* text-align: center; */
     /* height: 100vh; */
-    width: 100%;
-  }
+    /* width: 100%; */
+  /* } */
   
   /* Styles for the right wrapper */
-  .right_wrapper {
+  /* .right_wrapper {
     display: flex;
     justify-content: left;
     padding-left: 10px;
   }
-  
+   */
   /* Styles for the index */
-  .index strong {
+  /* .index strong {
     color: #555;
     font-size: 20px;
     line-height: 1.5;
     text-align: center;
-  }
+  } */
   
 
 

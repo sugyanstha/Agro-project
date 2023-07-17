@@ -30,12 +30,15 @@ if (isset($_POST['delete'])) {
 if (isset($_POST['submit'])) {
     $farmer_id = $_POST['farmerid'];
     $farmarea = $_POST['farmarea'];
+    $farmsize = $_POST['farmsize'];
     $farmtype = $_POST['farmtype'];
 
-    $sql = "INSERT INTO farm (farm_area, farm_type, farmer_id) VALUES ('$farmarea', '$farmtype', '$farmer_id')";
+    $sql = "INSERT INTO farm (farm_area, farm_size, farm_type, farmer_id) VALUES ('$farmarea', '$farmsize', '$farmtype', '$farmer_id')";
     $result = $conn->query($sql);
     if ($result) {
-        echo "Farm Inserted Successfully";
+        echo "<script>alert('Farm Inserted Successfully')</script>";
+        header("Location: myfarm.php");
+        exit;
     } else {
         echo "Error: " . $conn->error;
     }
@@ -47,7 +50,7 @@ $result = $conn->query($sql);
 ?>
 
 
-<link rel="stylesheet" href="css/table.css">
+<link rel="stylesheet" href="css/table.css"> <!--CSS link for table-->
 <div class="con">
     <h1>Farm Details</h1>
     <div class="table-wrapper">
@@ -61,6 +64,7 @@ $result = $conn->query($sql);
                         <th>SN</th>
                         <th>Farmer ID</th>
                         <th>Farm Area</th>
+                        <th>Farm Size</th>
                         <th>Farm Type</th>
                         <th>Action</th>
                     </tr>
@@ -71,6 +75,7 @@ $result = $conn->query($sql);
                                 <td><?php echo $i++; ?></td>
                                 <td><?php echo $row['farmer_id']; ?></td>
                                 <td><?php echo $row['farm_area']; ?></td>
+                                <td><?php echo $row['farm_size']; ?></td>
                                 <td><?php echo $row['farm_type']; ?></td>
                                 <td>
                                     <form method="post" action="myfarm_edit.php">
@@ -86,7 +91,7 @@ $result = $conn->query($sql);
                         <?php }
                     } else { ?>
                         <tr>
-                            <td colspan="5">No farms found.</td>
+                            <td colspan="6">No farms found.</td>
                         </tr>
                     <?php } ?>
                 </tbody>
@@ -95,7 +100,7 @@ $result = $conn->query($sql);
     </div>
 </div>
 
-<link rel="stylesheet" href="css/myfarm.css">
+<link rel="stylesheet" href="css/myfarm.css"> <!--CSS link for form-->
 
 <?php if (isset($_POST['add'])) { ?>
     <div class="cont">
@@ -105,7 +110,8 @@ $result = $conn->query($sql);
                 <div>
                     <label for="farmarea" class="far">Farm Area</label>
                     <input type="text" name="farmarea" /><br>
-                    <select name="area" id="farea">
+                    <label for="farmsize">Farm Size</label>
+                    <select name="farmsize" id="farea">
                         <option value="acers">Acers</option>
                         <option value="biga">Biga</option>
                         <option value="aana">Aana</option>

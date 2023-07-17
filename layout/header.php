@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AGROCOUNCIL</title>
        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/login.css">
+        <!-- <link rel="stylesheet" href="css/login.css"> -->
         <!-- <link rel="stylesheet" href="css/style.css"> -->
 </head>
 <body>
@@ -23,8 +23,4 @@
 
 
     </div>
-
-
-
-
     <div id="main">

@@ -2,6 +2,10 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// Include files
+include('layout/header.php');
+// include('layout/left.php');
+
 // Database connection
 $conn = new mysqli("localhost", "root", "", "agro_council");
 if ($conn->connect_error) {
@@ -11,9 +15,10 @@ if ($conn->connect_error) {
 // Edit farm
 if (isset($_POST['edit_farm'])) {
     $farmarea = $_POST['farmarea'];
+    $farmsize = $_POST['farmsize'];
     $farmtype = $_POST['farmtype'];
     $id = $_POST['fid'];
-    $sql = "UPDATE farm SET farm_area='$farmarea', farm_type='$farmtype' WHERE fid='$id'";
+    $sql = "UPDATE farm SET farm_area='$farmarea', farm_size='$farmsize', farm_type='$farmtype' WHERE fid='$id'";
     $result = $conn->query($sql);
     if ($result) {
         header("Location: myfarm.php");
@@ -31,6 +36,7 @@ if (isset($_POST['edit'])) {
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $farmarea = $row['farm_area'];
+        $farmsize = $row['farm_size'];
         $farmtype = $row['farm_type'];
     } else {
         die("No farm found with the given ID.");
@@ -48,7 +54,8 @@ if (isset($_POST['edit'])) {
                 <div>
                     <label for="farmarea" class="far">Farm Area</label>
                     <input type="text" name="farmarea" value="<?php echo $farmarea; ?>" /><br>
-                    <select name="area" id="farea">
+                    <label for="framsize">Farm Size</label>
+                    <select name="farmsize" id="farea">
                         <option value="acers">Acers</option>
                         <option value="acers">Biga</option>
                         <option value="acers">Aana</option>
