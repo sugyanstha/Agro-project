@@ -1,7 +1,12 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start();
+
 // Include Files
 include('layout/header.php');
-// include('layout/left.php');
+include('layout/left.php');
 
 // Database Connection
 $conn = new mysqli("localhost", "root", "", "agro_council");
@@ -15,7 +20,7 @@ if (isset($_POST['submit'])) {
     $title = $_POST['title'];
     $description = $_POST['description'];
 
-    $sql = "INSERT INTO predicament (title, description, farmer_id) VALUES ('$title', '$description', '$farmer_id')";
+    $sql = "INSERT INTO predicament (farmer_id, title, description) VALUES ('$farmer_id', '$title', '$description')";
     $result = $conn->query($sql);
     if ($result) {
         echo "<script>alert('Predicament Inserted Successfully')</script>";

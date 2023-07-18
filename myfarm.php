@@ -30,10 +30,10 @@ if (isset($_POST['delete'])) {
 if (isset($_POST['submit'])) {
     $farmer_id = $_POST['farmerid'];
     $farmarea = $_POST['farmarea'];
-    $farmsize = $_POST['farmsize'];
+    $farmunit = $_POST['farmunit'];
     $farmtype = $_POST['farmtype'];
 
-    $sql = "INSERT INTO farm (farm_area, farm_size, farm_type, farmer_id) VALUES ('$farmarea', '$farmsize', '$farmtype', '$farmer_id')";
+    $sql = "INSERT INTO farm (farm_area, farm_unit, farm_type, farmer_id) VALUES ('$farmarea', '$farmunit', '$farmtype', '$farmer_id')";
     $result = $conn->query($sql);
     if ($result) {
         echo "<script>alert('Farm Inserted Successfully')</script>";
@@ -64,7 +64,7 @@ $result = $conn->query($sql);
                         <th>SN</th>
                         <th>Farmer ID</th>
                         <th>Farm Area</th>
-                        <th>Farm Size</th>
+                        <th>Farm Unit</th>
                         <th>Farm Type</th>
                         <th>Action</th>
                     </tr>
@@ -75,7 +75,7 @@ $result = $conn->query($sql);
                                 <td><?php echo $i++; ?></td>
                                 <td><?php echo $row['farmer_id']; ?></td>
                                 <td><?php echo $row['farm_area']; ?></td>
-                                <td><?php echo $row['farm_size']; ?></td>
+                                <td><?php echo $row['farm_unit']; ?></td>
                                 <td><?php echo $row['farm_type']; ?></td>
                                 <td>
                                     <form method="post" action="myfarm_edit.php">
@@ -110,7 +110,7 @@ $result = $conn->query($sql);
                 <div>
                     <label for="farmarea" class="far">Farm Area</label>
                     <input type="text" name="farmarea" /><br>
-                    <label for="farmsize">Farm Size</label>
+                    <label for="farmunit">Farm Unit</label>
                     <select name="farmsize" id="farea">
                         <option value="acers">Acers</option>
                         <option value="biga">Biga</option>

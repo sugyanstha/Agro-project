@@ -1,4 +1,9 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start();
+
 // Include Files
 include('layout/header.php');
 include('layout/left.php');
@@ -53,7 +58,6 @@ if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
                             <td><?php echo $row['farmer_id']; ?></td>
                             <td><?php echo $row['title']; ?></td>
                             <td><?php echo $row['description']; ?></td>
-                            <!-- <td><?php echo $row['submitted_date']; ?></td> -->
                             <td>
                                 <form method="post" action="predicament_table.php">
                                     <input type="hidden" value="<?php echo $row['pid']; ?>" name="pid" />
