@@ -34,5 +34,5 @@ if ($result) {
 } else {
     // Handle the case when the query fails
 }
-include('layout/footer.php');
+// include('layout/footer.php');
 ?>

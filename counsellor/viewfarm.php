@@ -15,34 +15,34 @@ if ($conn->connect_error) {
 }
 
 // Delete record
-if (isset($_POST['delete'])) {
-    $id = $_POST['fid'];
-    $sql = "DELETE FROM farm WHERE fid = '$id'";
-    $result = $conn->query($sql);
-    if ($result) {
-        echo "<script>alert('Record Deleted Successfully');</script>";
-    } else {
-        echo "Error: " . $conn->error;
-    }
-}
+// if (isset($_POST['delete'])) {
+//     $id = $_POST['fid'];
+//     $sql = "DELETE FROM farm WHERE fid = '$id'";
+//     $result = $conn->query($sql);
+//     if ($result) {
+//         echo "<script>alert('Record Deleted Successfully');</script>";
+//     } else {
+//         echo "Error: " . $conn->error;
+//     }
+// }
 
 // Add farm
-if (isset($_POST['submit'])) {
-    $farmer_id = $_POST['farmerid'];
-    $farmarea = $_POST['farmarea'];
-    $farmunit = $_POST['farmunit'];
-    $farmtype = $_POST['farmtype'];
+// if (isset($_POST['submit'])) {
+//     $farmer_id = $_POST['farmerid'];
+//     $farmarea = $_POST['farmarea'];
+//     $farmunit = $_POST['farmunit'];
+//     $farmtype = $_POST['farmtype'];
 
-    $sql = "INSERT INTO farm (farm_area, farm_unit, farm_type, farmer_id) VALUES ('$farmarea', '$farmunit', '$farmtype', '$farmer_id')";
-    $result = $conn->query($sql);
-    if ($result) {
-        echo "<script>alert('Farm Inserted Successfully')</script>";
-        header("Location: myfarm.php");
-        exit;
-    } else {
-        echo "Error: " . $conn->error;
-    }
-}
+//     $sql = "INSERT INTO farm (farm_area, farm_unit, farm_type, farmer_id) VALUES ('$farmarea', '$farmunit', '$farmtype', '$farmer_id')";
+//     $result = $conn->query($sql);
+//     if ($result) {
+//         echo "<script>alert('Farm Inserted Successfully')</script>";
+//         header("Location: myfarm.php");
+//         exit;
+//     } else {
+//         echo "Error: " . $conn->error;
+//     }
+// }
 
 // Fetch farms
 $sql = "SELECT * FROM farm WHERE farmer_id = '" . $_SESSION['id'] . "'";
@@ -54,7 +54,7 @@ $result = $conn->query($sql);
 <div class="con">
     <h1>Farm Details</h1>
     <div class="table-wrapper">
-        <form action="" method="post">
+        <form action="myfarm.php" method="post">
             <input type="submit" value="Add" name="add">
         </form>
         <?php if (!isset($_POST['add'])) { ?>
@@ -66,7 +66,7 @@ $result = $conn->query($sql);
                         <th>Farm Area</th>
                         <th>Farm Unit</th>
                         <th>Farm Type</th>
-                        <th>Action</th>
+                        <!-- <th>Action</th> -->
                     </tr>
                     <?php if ($result && $result->num_rows > 0) {
                         $i = 1;
@@ -99,33 +99,3 @@ $result = $conn->query($sql);
         <?php } ?>
     </div>
 </div>
-
-<link rel="stylesheet" href="css/myfarm.css"> <!--CSS link for form-->
-
-<?php if (isset($_POST['add'])) { ?>
-    <div class="cont">
-        <div id="right">
-            <form action="myfarm.php" method="post">
-                <h1>Add Farm</h1>
-                <div>
-                    <label for="farmarea" class="far">Farm Area</label>
-                    <input type="text" name="farmarea" /><br>
-                    <label for="farmunit">Farm Unit</label>
-                    <select name="farmsize" id="farea">
-                        <option value="acers">Acers</option>
-                        <option value="biga">Biga</option>
-                        <option value="aana">Aana</option>
-                        <option value="ropani">Ropani</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="farmtype">Farm Type</label>
-                    <input type="text" name="farmtype" /><br>
-                </div>
-                <input type="hidden" value="<?php echo $_SESSION['id']; ?>" name="farmerid">
-                <input type="submit" value="Add Farm" name="submit" />
-            </form>
-        </div>
-    </div>
-<?php } ?>
-

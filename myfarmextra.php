@@ -1,29 +1,12 @@
 <?php
-include('layout/header.php');
-
-// Check if the user is logged in (you should replace this with your actual authentication check)
-// $isLoggedIn = true; // Set this to true if the user is logged in
-session_start();
-if(!isset($_SESSION['email']))
-{
-   header("location:login.php");
-}
-// $name=$row['name'];
-$email=$_SESSION['email'];
-
-// Set the active page based on the user's login status
-// $activePage = $email ? "myfarm.php" : "default"; // Set "myfarm.php" as active if logged in, else set "default"
-
-include('layout/left.php');
-?>
-
-<?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// session_start();
+session_start();
 
 // Include files
+include('layout/header.php');
+include('layout/left.php');
 
 // Database connection
 $conn = new mysqli("localhost", "root", "", "agro_council");
@@ -43,7 +26,23 @@ if (isset($_POST['delete'])) {
     }
 }
 
+// Add farm
+if (isset($_POST['submit'])) {
+    $farmer_id = $_POST['farmerid'];
+    $farmarea = $_POST['farmarea'];
+    $farmunit = $_POST['farmunit'];
+    $farmtype = $_POST['farmtype'];
 
+    $sql = "INSERT INTO farm (farm_area, farm_unit, farm_type, farmer_id) VALUES ('$farmarea', '$farmunit', '$farmtype', '$farmer_id')";
+    $result = $conn->query($sql);
+    if ($result) {
+        echo "<script>alert('Farm Inserted Successfully')</script>";
+        header("Location: myfarm.php");
+        exit;
+    } else {
+        echo "Error: " . $conn->error;
+    }
+}
 
 // Fetch farms
 $sql = "SELECT * FROM farm WHERE farmer_id = '" . $_SESSION['id'] . "'";
@@ -55,13 +54,13 @@ $result = $conn->query($sql);
 <div class="con">
     
         
-    <?php if (!isset($_POST['add'])) { ?>
-        <h1>Farm Details</h1>
-        <div class="table-wrapper">
-            <form action="farmform.php" method="post">
-                <input type="submit" value="Add" name="add">
-            </form>
+        <?php if (!isset($_POST['add'])) { ?>
             <table class="fl-table">
+            <h1>Farm Details</h1>
+    <div class="table-wrapper">
+            <form action="" method="post">
+            <input type="submit" value="Add" name="add">
+        </form>
                 <tbody>
                     <tr>
                         <th>SN</th>
@@ -85,7 +84,7 @@ $result = $conn->query($sql);
                                         <input type="hidden" value="<?php echo $row['fid']; ?>" name="fid" />
                                         <input type="submit" value="Edit" name="edit" />
                                     </form>
-                                    <form method="post" action="home.php">
+                                    <form method="post" action="myfarm.php">
                                         <input type="hidden" value="<?php echo $row['fid']; ?>" name="fid" />
                                         <input type="submit" value="Delete" name="delete" />
                                     </form>
@@ -103,5 +102,32 @@ $result = $conn->query($sql);
     </div>
 </div>
 
+<link rel="stylesheet" href="css/myfarm.css"> <!--CSS link for form-->
 
+<?php if (isset($_POST['add'])) { ?>
+    <div class="cont">
+        <div id="right">
+            <form action="myfarm.php" method="post">
+                <h1>Add Farm</h1>
+                <div>
+                    <label for="farmarea" class="far">Farm Area</label>
+                    <input type="text" name="farmarea" /><br>
+                    <label for="farmunit">Farm Unit</label>
+                    <select name="farmsize" id="farea">
+                        <option value="acers">Acers</option>
+                        <option value="biga">Biga</option>
+                        <option value="aana">Aana</option>
+                        <option value="ropani">Ropani</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="farmtype">Farm Type</label>
+                    <input type="text" name="farmtype" /><br>
+                </div>
+                <input type="hidden" value="<?php echo $_SESSION['id']; ?>" name="farmerid">
+                <input type="submit" value="Add Farm" name="submit" />
+            </form>
+        </div>
+    </div>
+<?php } ?>
 
