@@ -14,7 +14,8 @@
         <ul>
             <li><a href="viewfarm.php">View Farm</a></li>
             <li><a href="view_predicament.php">View Predicament</a></li>
-            <li><a href="add_guidelines.php">Guidelines</a></li>
+            <li><a href="guidelines_table.php">Guidelines</a></li>
+            <li><a href="../logout.php">Logout</a></li>
         </ul>
     </div>
     <!-- <div class="main_content">

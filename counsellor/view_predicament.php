@@ -14,17 +14,31 @@ if ($conn->connect_error) {
     die("Connection Error: " . $conn->connect_error);
 }
 
-// Delete record
-// if (isset($_POST['delete'])) {
-//     $id = $_POST['pid'];
-//     $sql = "DELETE FROM predicament WHERE pid = '$id'";
-//     $result = $conn->query($sql);
-//     if ($result) {
-//         echo "<script>alert('Record Deleted Successfully');</script>";
-//     } else {
-//         echo "Error: " . $conn->error;
-//     }
-// }
+//Add Guidelines
+if(isset($_POST['submit'])){
+    $pid = $_POST['pid'];
+
+    // Add Guidelines
+    if (isset($_POST['add'])) {
+        $counsellor_id = $_POST['counsellorid'];
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+
+        // Sanitize inputs
+        $title = $conn->real_escape_string($title);
+        $description = $conn->real_escape_string($description);
+
+        $sql = "INSERT INTO guidelines (counsellor_id, title, predicament_id, description) VALUES ('$counsellor_id', '$title', '$pid', '$description')";
+        if ($conn->query($sql) === TRUE) {
+            echo "<script>alert('Guidelines Inserted Successfully')</script>";
+            header("Location: view_predicament.php");
+            exit;
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
+}
+
 
 // Fetch Predicament
 if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
@@ -37,8 +51,8 @@ if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
 <div class="con">
     <h1>Predicament Details</h1>
     <div class="table-wrapper">
-        <!-- <form action="add_predicament.php" method="post">
-            <input type="submit" value="Add" name="add">
+        <!-- <form action="add_guidelines.php" method="post">
+            <input type="submit" value="Add Guidelines" name="add">
         </form> -->
         <table class="fl-table">
             <tbody>
@@ -48,21 +62,29 @@ if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
                     <th>Title</th>
                     <th>Description</th>
                     <!-- <th>Submitted Date</th> -->
-                    <!-- <th>Action</th> -->
+                    <th>Action</th>
                 </tr>
                 <?php if (isset($result) && $result->num_rows > 0) { // Check if $result is set
                     $i = 1;
-                    while ($row = $result->fetch_assoc()) { ?>
+                    while ($row = $result->fetch_assoc()) { 
+                        ?>
                         <tr>
                             <td><?php echo $i++; ?></td>
                             <td><?php echo $row['farmer_id']; ?></td>
                             <td><?php echo $row['title']; ?></td>
                             <td><?php echo $row['description']; ?></td>
+                            <!-- <td><?php //echo $row['submitted_date']; ?></td> -->
                             <td>
-                                <!-- <form method="post" action="predicament_table.php">
-                                    <input type="hidden" value="<?php //echo $row['pid']; ?>" name="pid" />
-                                    <input type="submit" value="Delete" name="delete" />
-                                </form> -->
+                            <form method="post" action="../counsellor/add_guidelines.php">
+                                <input type="hidden" value="<?php echo $row['pid']; ?>" name="pid" />
+                                <input type="submit" value="Update" name="edit_guidelines" />
+                            </form>
+
+                            <form method="post" action="add_guidelines.php">
+                                <input type="hidden" value="<?php echo $row['pid']; ?>" name="pid" />
+                                <input type="submit" value="Add Guidelines" name="add_guidelines" />
+                            </form>
+
                             </td>
                         </tr>
                     <?php }
@@ -75,3 +97,4 @@ if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
         </table>
     </div>
 </div>
+

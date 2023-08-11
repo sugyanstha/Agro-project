@@ -5,8 +5,8 @@ ini_set('display_errors', 1);
 session_start();
 
 // Include Files
-include('layout/header.php');
-include('layout/left.php');
+// include('layout/header.php');
+// include('layout/left.php');
 
 // Database Connection
 $conn = new mysqli("localhost", "root", "", "agro_council");
@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 // Delete record
 if (isset($_POST['delete'])) {
     $id = $_POST['pid'];
-    $sql = "DELETE FROM predicament WHERE pid = '$id'";
+    $sql = "DELETE FROM guidelines WHERE gid = '$id'";
     $result = $conn->query($sql);
     if ($result) {
         echo "<script>alert('Record Deleted Successfully');</script>";
@@ -26,28 +26,29 @@ if (isset($_POST['delete'])) {
     }
 }
 
-// Fetch Predicament
+// Fetch Guidelines
 if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
-    $sql = "SELECT * FROM predicament WHERE farmer_id = '" . $_SESSION['id'] . "'";
+    $sql = "SELECT * FROM guidelines WHERE counsellor_id = '" . $_SESSION['id'] . "'";
     $result = $conn->query($sql);
 }
 ?>
 
-<link rel="stylesheet" href="css/table.css">
+<link rel="stylesheet" href="../css/tables.css">
 <div class="con">
-    <h1>Predicament Details</h1>
+    <h1 align="center">Guidelines Details</h1>
     <div class="table-wrapper">
-        <form action="add_predicament.php" method="post">
-            <input type="submit" value="Add Predicament" name="add">
-        </form>
+        <!-- <form action="add_guidelines.php" method="post">
+            <input type="submit" value="Add" name="add">
+        </form> -->
         <table class="fl-table">
             <tbody>
                 <tr>
                     <th>SN</th>
-                    <th>Farmer ID</th>
+                    <th>Counsellor ID</th>
                     <th>Title</th>
                     <th>Description</th>
                     <th>Submitted Date</th>
+                    <th>Predicament ID</th>
                     <th>Action</th>
                 </tr>
                 <?php if (isset($result) && $result->num_rows > 0) { // Check if $result is set
@@ -55,14 +56,15 @@ if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
                     while ($row = $result->fetch_assoc()) { ?>
                         <tr>
                             <td><?php echo $i++; ?></td>
-                            <td><?php echo $row['farmer_id']; ?></td>
+                            <td><?php echo $row['counsellor_id']; ?></td>
                             <td><?php echo $row['title']; ?></td>
                             <td><?php echo $row['description']; ?></td>
                             <td><?php echo $row['submitted_date']; ?></td>
+                            <td><?php echo $row['predicament_id']; ?></td>
 
                             <td>
-                                <form method="post" action="predicament_table.php">
-                                    <input type="hidden" value="<?php echo $row['pid']; ?>" name="pid" />
+                                <form method="post" action="guidelines_table.php">
+                                    <input type="hidden" value="<?php echo $row['id']; ?>" name="id" />
                                     <input type="submit" value="Delete" name="delete" />
                                 </form>
                             </td>
@@ -70,10 +72,11 @@ if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
                     <?php }
                 } else { ?>
                     <tr>
-                        <td colspan="6">No Predicament found.</td>
+                        <td colspan="7">No Guidelines found.</td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
     </div>
 </div>
+

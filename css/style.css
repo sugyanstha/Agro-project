@@ -58,12 +58,15 @@ body{
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  /* position: fixed; */
 }
 
 #left strong {
-  font-size: 20px;
-  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
   text-align: center;
+  margin-bottom: 30px;
+  font-size: 25px;
 }
 
 #left .ol_ol {
@@ -73,22 +76,44 @@ body{
   overflow-y: auto;
 }
 
-#left .ol_ol li {
+/* #left .ol_ol li {
   margin-bottom: 10px;
   padding: 20px;
   text-align: center;
+} */
+
+#left .ol_ol li {
+  padding: 15px;
+  border-bottom: 1px solid #bdb8d7;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  list-style: none;
 }
 
-#left .ol_ol li a {
+/* #left .ol_ol li a {
   text-decoration: none;
   color: #333;
   font-size: 16px;
+  display: block;
+} */
+
+#left .ol_ol li a {
+  color: #333;
+  display: block;
 }
 
-#left .ol_ol li a:hover {
+/* #left .ol_ol li a:hover {
   color: #007bff;
-}
+} */
 
+#left .ol_ol li:hover{
+  background-color: #594f8d;
+  border-radius: 20px;
+}
+    
+#left .ol_ol li:hover a{
+  color: #fff;
+}
 
 /* Styles for the right container */
 /* #right { */
@@ -153,4 +178,49 @@ body{
     margin-top: 20px;
     font-size: 14px;
     color: #777;
+}
+
+
+
+/* Media Query for Tablets and Smaller Screens */
+@media screen and (max-width: 768px) {
+  #header {
+      padding: 5px; /* Adjust header padding */
+  }
+
+  #left {
+      width: 100%; /* Full width for the sidebar */
+      padding: 10px; /* Adjust sidebar padding */
+  }
+
+  /* If you want to adjust font sizes for smaller screens */
+  /* #left strong {
+      font-size: 20px;
+  }
+
+  #left .ol_ol li a {
+      font-size: 14px;
+  } */
+
+  /* Additional Responsive Styles for Main Content if needed */
+  /* #main {
+      flex-direction: column; // Stack main content below sidebar
+  }
+
+  .right_wrapper {
+      padding-left: 5px;
+  } */
+
+  #footer {
+      padding: 10px; /* Adjust footer padding */
+  }
+
+  .social-icons img {
+      width: 15px; /* Adjust social icon size */
+      height: 15px;
+  }
+
+  .copyright {
+      font-size: 12px; /* Adjust copyright font size */
+  }
 }

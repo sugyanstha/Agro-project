@@ -1,34 +1,42 @@
-
-
 /* CSS for adding farm */
 .cont {
-  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: max-content;
+  /* max-width: 500px; */
   margin: 70px auto;
   padding: 20px;
-  height: max-content;
- 
+  width: -webkit-fill-available;
 }
 
 #right {
   background-color: #f1f1f1;
-  
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #right h1 {
-  font-size: 24px;
+  /* font-size: 24px; */
   font-weight: bold;
-  margin-bottom : 20px;
-  
+  margin-bottom: 20px;
+  color: #333;
+  display: flex;
+  justify-content: center;
 }
 
 #right label {
   display: block;
   font-weight: bold;
   margin-bottom: 10px;
+  color: #555;
 }
 
 #right input[type="text"],
-#right input[type="submit"] {
+#right select{
   width: -webkit-fill-available;
   padding: 10px;
   margin-bottom: 15px;
@@ -37,9 +45,17 @@
 }
 
 #right input[type="submit"] {
+  display: block;
+  margin: 0 auto; /* This centers the element horizontally */
+  width: 30%;
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   background-color: #007bff;
   color: #fff;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 #right input[type="submit"]:hover {
@@ -50,19 +66,41 @@
   display: none;
 }
 
-/* CSS for select */
-.far{
+#right a {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #333;
+  padding: 12px 34px;
+  width:30%;
+  font-size: 13px;
+  background: transparent;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+#right a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Additional Styles for select */
+.far {
   display: block;
   font-weight: bold;
   margin-bottom: 10px;
+  color: #555;
 }
 
-input[type="text"], select{
+select {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
-}
-
-select{
   width: 100%;
+  color: #333;
+  font-size: 16px;
 }

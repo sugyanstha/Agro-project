@@ -5,8 +5,7 @@ ini_set('display_errors', 1);
 session_start();
 
 // Include files
-include('layout/header.php');
-include('layout/left.php');
+include('dashboard.php');
 
 // Database connection
 $conn = new mysqli("localhost", "root", "", "agro_council");
@@ -50,13 +49,13 @@ $result = $conn->query($sql);
 ?>
 
 
-<link rel="stylesheet" href="css/table.css"> <!--CSS link for table-->
+<link rel="stylesheet" href="../css/table.css"> <!--CSS link for table-->
 <div class="con">
     <h1>Farm Details</h1>
     <div class="table-wrapper">
-        <form action="myfarm.php" method="post">
+        <!-- <form action="myfarm.php" method="post">
             <input type="submit" value="Add" name="add">
-        </form>
+        </form> -->
         <?php if (!isset($_POST['add'])) { ?>
             <table class="fl-table">
                 <tbody>
@@ -77,7 +76,7 @@ $result = $conn->query($sql);
                                 <td><?php echo $row['farm_area']; ?></td>
                                 <td><?php echo $row['farm_unit']; ?></td>
                                 <td><?php echo $row['farm_type']; ?></td>
-                                <td>
+                                <!-- <td>
                                     <form method="post" action="myfarm_edit.php">
                                         <input type="hidden" value="<?php echo $row['fid']; ?>" name="fid" />
                                         <input type="submit" value="Edit" name="edit" />
@@ -86,7 +85,7 @@ $result = $conn->query($sql);
                                         <input type="hidden" value="<?php echo $row['fid']; ?>" name="fid" />
                                         <input type="submit" value="Delete" name="delete" />
                                     </form>
-                                </td>
+                                </td> -->
                             </tr>
                         <?php }
                     } else { ?>

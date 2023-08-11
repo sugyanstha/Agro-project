@@ -6,7 +6,7 @@ session_start();
 
 // Include Files
 include('layout/header.php');
-include('layout/left.php');
+// include('layout/left.php');
 
 // Database Connection
 $conn = new mysqli("localhost", "root", "", "agro_council");
@@ -48,7 +48,9 @@ if (isset($_POST['submit'])) {
                 <textarea name="description" id="description" placeholder="Enter your predicament description" cols="30" rows="10"></textarea>
             </div>
             <input type="hidden" value="<?php echo $_SESSION['id']; ?>" name="farmerid">
-            <input type="submit" value="Add Predicament" name="submit" />
+            <input type="submit" value="Add Predicament" name="submit" /><br>
+            <a href="predicament_table.php">Back</a>
+
         </form>
     </div>
 </div>

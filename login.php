@@ -18,20 +18,8 @@ if(isset($_POST['login'])){
     $email=$_POST['email'];
     $password=$_POST['password'];
     $userselects=$_POST['userselects'];
-    $errors=array();
-    if(empty($email) || empty($password)){
-        $errors[]="Email or Password empty";
-    }
 
-    if(count($errors)>0){
-        foreach($errors as $errmsg){
-            echo"<script>alert('$errmsg');</script>";
-        }
-        echo"<script>window.location.href='home.php';</script>";
-        exit;
-    }
-    else{
-
+    //Database Connection
     $conn=new mysqli("localhost", "root", "", "agro_council");
     if($conn->connect_error){
         die("Connection Error");
@@ -60,17 +48,18 @@ if(isset($_POST['login'])){
         $_SESSION['usertype'] = $userselects;
 
         //redirect the user to the home page
+        if($userselects=="farmer")
         header("location:home.php");
+
+        if($userselects=="counsellor")
+        header("location:counsellor/dashboard.php");
         exit;
     }
     else{
-        echo"<script>alter('Email or Password Invalid');</script>";
-        echo"<script>window.location.href='login.php';</script>";
+        header("Location: login.php?error=1");
         exit;
-        }
+        }   
     } 
-
-}
 
 ?>
         
@@ -79,6 +68,11 @@ if(isset($_POST['login'])){
 <div class="log">
   <div class="container">
       <h1>Login</h1>
+      <?php if (isset($_GET['error'])) { ?>
+                <div class="error-message">
+                    Username or Password Invalid!
+                </div>
+            <?php } ?>
       <form method="post" action="login.php" autocomplete="off">
           <div class="form-group">
               <label for="email">Email:</label>

@@ -21,7 +21,7 @@ if (isset($_POST['edit_farm'])) {
     $sql = "UPDATE farm SET farm_area='$farmarea', farm_unit='$farmunit', farm_type='$farmtype' WHERE fid='$id'";
     $result = $conn->query($sql);
     if ($result) {
-        header("Location: myfarm.php");
+        header("Location: home.php");
         exit;
     } else {
         die("Error: " . $conn->error);

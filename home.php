@@ -23,8 +23,6 @@ ini_set('display_errors', 1);
 
 // session_start();
 
-// Include files
-
 // Database connection
 $conn = new mysqli("localhost", "root", "", "agro_council");
 if ($conn->connect_error) {
@@ -59,7 +57,7 @@ $result = $conn->query($sql);
         <h1>Farm Details</h1>
         <div class="table-wrapper">
             <form action="farmform.php" method="post">
-                <input type="submit" value="Add" name="add">
+                <input type="submit" value="Add Farm" name="add">
             </form>
             <table class="fl-table">
                 <tbody>

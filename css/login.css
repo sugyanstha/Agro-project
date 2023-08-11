@@ -84,4 +84,12 @@ body{
   a:hover {
     text-decoration: underline;
   }
+
   
+  .error-message{
+      /* background-color: #474846; */
+      color: #ff8482;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 7px;
+    }
