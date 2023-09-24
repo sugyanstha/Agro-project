@@ -37,9 +37,7 @@ if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
 <div class="con">
     <h1>Predicament Details</h1>
     <div class="table-wrapper">
-        <form action="add_predicament.php" method="post">
-            <input type="submit" value="Add Predicament" name="add">
-        </form>
+
         <table class="fl-table">
             <tbody>
                 <tr>

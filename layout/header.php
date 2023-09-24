@@ -12,9 +12,9 @@
 <body>
     <div id="header">
         <div id="logo">
-            <!-- <img src="img/logo.jpg" alt=""> -->
+            <img src="img/6835119.png" alt="agrocouncil">
         </div>
-        <div id="banner"> Welcome to AGROCOUNCIL </div>
+        <div id="banner"> WELCOME TO AGROCOUNCIL </div>
         <div id="profile">
             <!-- <a href="registration.php">Register</a> -->
             <a href="logout.php">Logout</a>

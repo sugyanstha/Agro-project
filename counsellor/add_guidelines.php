@@ -23,8 +23,8 @@ if(isset($_POST['add_guidelines'])) {
         $description = $_POST['description'];
 
         // Sanitize inputs
-        $title = $conn->real_escape_string($title);
-        $description = $conn->real_escape_string($description);
+        $title = mysqli_real_escape_string($conn, $title);
+        $description = mysqli_real_escape_string($conn, $description);
 
         $sql = "INSERT INTO guidelines (counsellor_id, title, predicament_id, description) VALUES ('$counsellor_id', '$title', '$pid', '$description')";
         if ($conn->query($sql) === TRUE) {

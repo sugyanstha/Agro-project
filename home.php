@@ -79,15 +79,21 @@ $result = $conn->query($sql);
                                 <td><?php echo $row['farm_unit']; ?></td>
                                 <td><?php echo $row['farm_type']; ?></td>
                                 <td>
-                                    <form method="post" action="myfarm_edit.php">
-                                        <input type="hidden" value="<?php echo $row['fid']; ?>" name="fid" />
-                                        <input type="submit" value="Edit" name="edit" />
-                                    </form>
-                                    <form method="post" action="home.php">
-                                        <input type="hidden" value="<?php echo $row['fid']; ?>" name="fid" />
-                                        <input type="submit" value="Delete" name="delete" />
+                                    <div class="button-row">
+                                        <form method="post" action="myfarm_edit.php">
+                                            <input type="hidden" value="<?php echo $row['fid']; ?>" name="fid" />
+                                            <input type="submit" value="Edit" name="edit" />
+                                        </form>
+                                        <form method="post" action="home.php">
+                                            <input type="hidden" value="<?php echo $row['fid']; ?>" name="fid" />
+                                            <input type="submit" value="Delete" name="delete" />
+                                        </form>
+                                    </div>
+                                    <form action="add_predicament.php" method="post">
+                                        <input type="submit" value="Add Predicament" name="add">
                                     </form>
                                 </td>
+
                             </tr>
                         <?php }
                     } else { ?>

@@ -1,12 +1,24 @@
 <?php
+
+// Include Files
+include('../counsellor/layout/header.php');
+session_start();
+if(!isset($_SESSION['email']))
+{
+   header("location:login.php");
+}
+// $name=$row['name'];
+$email=$_SESSION['email'];
+include('../counsellor/layout/sidebar.php');
+?>
+
+
+<?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-session_start();
+// session_start();
 
-// Include Files
-include('dashboard.php');
-// include('layout/left.php');
 
 // Database Connection
 $conn = new mysqli("localhost", "root", "", "agro_council");
@@ -42,11 +54,11 @@ if(isset($_POST['submit'])){
 
 // Fetch Predicament
 if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
-    $sql = "SELECT * FROM predicament WHERE farmer_id = '" . $_SESSION['id'] . "'";
+    $sql = "SELECT * FROM predicament";
     $result = $conn->query($sql);
 }
 ?>
-
+<!-- WHERE farmer_id = '" . $_SESSION['id'] . "' -->
 <link rel="stylesheet" href="../css/table.css">
 <div class="con">
     <h1>Predicament Details</h1>
@@ -75,10 +87,10 @@ if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
                             <td><?php echo $row['description']; ?></td>
                             <!-- <td><?php //echo $row['submitted_date']; ?></td> -->
                             <td>
-                            <form method="post" action="../counsellor/add_guidelines.php">
-                                <input type="hidden" value="<?php echo $row['pid']; ?>" name="pid" />
+                            <!-- <form method="post" action="../counsellor/add_guidelines.php">
+                                <input type="hidden" value="<?php //echo $row['pid']; ?>" name="pid" />
                                 <input type="submit" value="Update" name="edit_guidelines" />
-                            </form>
+                            </form> -->
 
                             <form method="post" action="add_guidelines.php">
                                 <input type="hidden" value="<?php echo $row['pid']; ?>" name="pid" />

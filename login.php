@@ -52,7 +52,7 @@ if(isset($_POST['login'])){
         header("location:home.php");
 
         if($userselects=="counsellor")
-        header("location:counsellor/dashboard.php");
+        header("location:counsellor/view_predicament.php");
         exit;
     }
     else{
@@ -91,7 +91,7 @@ if(isset($_POST['login'])){
                 <label for="farmer">Farmer</label>
                 <input type="radio" name="userselects" id="farmer" value="farmer" checked>
             </div>
-            <div class="farmer-part">
+            <div class="counsellor-part">
                 <label for="counsellor">Counsellor</label>
                 <input type="radio" name="userselects" id="counsellor" value="counsellor">
             </div>

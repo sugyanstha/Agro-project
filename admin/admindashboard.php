@@ -14,64 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        #header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        #container {
-            display: flex;
-            margin: 20px;
-        }
-
-        #sidebar {
-            width: 250px;
-            background-color: #f2f2f2;
-            padding: 20px;
-        }
-
-        #content {
-            flex-grow: 1;
-            padding: 20px;
-            background-color: #fff;
-        }
-
-        #footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        #sidebar ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        #sidebar ul li {
-            margin-bottom: 10px;
-        }
-
-        #sidebar ul li a {
-            text-decoration: none;
-            color: #333;
-        }
-
-        #sidebar ul li a:hover {
-            color: #000;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/adashboard.css">
 </head>
 <body>
     <div id="header">
@@ -81,18 +24,21 @@
     <div id="container">
         <div id="sidebar">
             <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Users</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Orders</a></li>
-                <li><a href="#">Settings</a></li>
-                <li><a href="adminlogout.php">Logout</a></li>
+                <li><a href="main_content.php">Dashboard</a></li>
+                <li><a href="#">Farmer Details</a></li>
+                <li><a href="#">Farm Details</a></li>
+                <li><a href="#">Counsellor Details</a></li>
+                <li><a href="#">Predicament Details</a></li>
+                <li><a href="#">Guidelines Details</a></li>
             </ul>
+            <div id="logout">
+                <a href="adminlogout.php">Logout</a>
+            </div>
         </div>
 
         <div id="content">
             <h2>Welcome, Admin</h2>
-            <p>This is the admin dashboard page. You can customize this page as per your requirements and add more functionality.</p>
+            <p>This is the admin dashboard page.</p>
         </div>
     </div>
 
@@ -101,3 +47,4 @@
     </div>
 </body>
 </html>
+

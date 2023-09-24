@@ -95,6 +95,12 @@ input[type="submit"]:focus {
   outline: none;
 }
 
+.button-row {
+  display: flex;
+  gap: 10px; /* Adjust the spacing between buttons as needed */
+}
+
+
 /* Additional Styles */
 
 form {

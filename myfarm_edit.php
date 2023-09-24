@@ -68,6 +68,9 @@ if (isset($_POST['edit'])) {
                 </div>
                 <input type="hidden" value="<?php echo $id; ?>" name="fid">
                 <input type="submit" value="Update" name="edit_farm" />
+
+                <a href="home.php">Back</a>
+
             </form>
         </div>
     </div>
