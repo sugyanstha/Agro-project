@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> 
+    <title>Home Page</title> 
     <link rel="stylesheet" href="css/hstyle.css">
 </head>
 <body>
     <section class="header">
        <nav>
-        <a href="index.php"><img src="img\logoo.png" alt=""></a>
+        <a href="index.php"><img src="img/6835119.png" alt="agrocouncil"></a>
         <div class="nav-links">
             <ul>
                 <li><a href="index.php">HOME</a></li>
                 <li><a href="aboutus.php">ABOUT US</a></li>
-                <li><a href="">FAQ</a></li>
-                <li><a href="">CONTACT US</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">CONTACT US</a></li>
                 <li><a href="login.php">LOGIN</a></li>
                 <li><a href="registration.php">SIGNUP</a></li>
             </ul>

@@ -1,4 +1,11 @@
 <?php
+
+    // Database connection
+    $conn = new mysqli("localhost", "root", "", "agro_council");
+    if ($conn->connect_error) {
+        die("Connection Error" . $conn->connect_error);
+    }
+
 // submission process
 if(isset($_POST['signup'])){
     // get data
@@ -38,12 +45,14 @@ if(isset($_POST['signup'])){
         $errors[] = "Mobile number should be 10 digits only.";
     }
 
-
-    // Database connection
-    $conn = new mysqli("localhost", "root", "", "agro_council");
-    if ($conn->connect_error) {
-        die("Connection Error" . $conn->connect_error);
+    // Uniqye Key Validation 
+    $sql_check_mail = "SELECT * FROM $table WHERE email = '$email'";
+    $result_check_mail = $conn->query($sql_check_mail);
+    if ($result_check_mail->num_rows > 0){
+        $errors[] = "Email Already Registered";
     }
+
+
 
     // If there are no errors, proceed with inserting into the database
     if (empty($errors)) {
@@ -75,53 +84,70 @@ if(isset($_POST['signup'])){
         }
     }
 
-    // if ($conn->query($sql) === true) {
-    //     header("Location: login.php");
-    //     exit; 
-    // } else {
-    //     $errors[] = "Error: " . $conn->error;
-    // }
+    
+
+   // Display errors using SweetAlert
+    if (!empty($errors)) {
+        $errorMessages = join("\n", $errors);
+        echo '.<script>
+        document.addEventListener("DOMContentLoaded", function() {
+        Swal.fire({
+            icon: "error",
+            title: "Sign Up Errors",
+            html: "' . $errorMessages . '",
+            showCloseButton: true,
+        });
+    });
+
+        </script>';
+    }
 }
 ?>
 
-   <div class="log">
-  <div class="container">
-      <h1>Registration Form</h1>
-      <form method="post" action="registration.php">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="css/sweetAlert.css">
+<div class="logg">
+    <div class="container">
+        <h1>Registration Form</h1>
+            <form method="post" action="registration.php" autocomplete="off">
         <link rel="stylesheet" href="css/login.css">
-          <div class="form-group">
-              <label for="name">Name:</label>
-              <input type="text" id="name" name="name" placeholder="Enter your name" required>
-          </div><div class="form-group">
-              <label for="address">Address:</label>
-              <input type="text" id="address" name="address" placeholder="Enter your address" required>
-          </div><div class="form-group">
-              <label for="mobile">Mobile:</label>
-              <input type="number" id="mobile" name="mobile" placeholder="Enter your number" required>
-          </div>
-          <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="email" id="email" name="email" placeholder="Enter your email" required>
-          </div>
-          <div class="form-group">
-              <label for="password">Password:</label>
-              <input type="password" id="password" name="password" placeholder="Enter your password "required>
-          </div>
-          <div class="user-selects">
-            <label for="farmer">Farmer</label>
-            <input type="radio" name="userselects" id="farmer" value="farmer" checked>
-            <label for="counsellor">Counsellor</label>
-            <input type="radio" name="userselects" id="counsellor" value="counsellor">
-          </div>
-          <div class="form-group">
-            <input type="submit" name="signup" value="SIGNUP">
-            <p>Have a account? <a href="login.php">Click here!!!</a></p>
-          </div>
-  
-      </form>
-  
-  </div>
-  </div>
+            <div class="group-loginn">
+                <label for="name" class="labell">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="group-loginn">
+                <label for="address" class="labell">Address:</label>
+                <input type="text" id="address" name="address" placeholder="Enter your address" required>
+            </div>
+            <div class="group-loginn">
+                <label for="mobile" class="labell">Mobile:</label>
+                <input type="tel" id="mobile" name="mobile" placeholder="Enter your number" required>
+            </div>
+            <div class="group-loginn">
+                <label for="email" class="labell">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="group-loginn">
+                <label for="password" class="labell">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password "required>
+            </div>
+            <div class="user-selects">
+                <div class="farmer-part">
+                    <input type="radio" name="userselects" id="farmer" value="farmer" checked>
+                    <label for="farmer">Farmer</label>
+                </div>
+                <div class="counsellor-part">
+                    <input type="radio" name="userselects" id="counsellor" value="counsellor">
+                    <label for="counsellor">Counsellor</label>
+                </div>
+            </div>
+            <div class="button-group">
+                <button type="submit" name="signup" value="signup">SIGNUP</button>
+            </div>
+            <span>Have a account? <a href="login.php">Click here!!!</a></span>
+            </form>
+    </div>
+</div>
 
 
 <?php

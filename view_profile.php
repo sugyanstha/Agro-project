@@ -35,33 +35,31 @@ if ($result && $result->num_rows > 0) {
 ?>
 
 <link rel="stylesheet" href="css/view_profile.css">
-<div class="container">
-    <h1>Your Profile</h1>
-        <!-- <a href="home.php" class="back-button">Back</a> -->
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="<?php echo isset($row['name']) ? $row['name'] : ''; ?>" readonly>
-            <!-- <button type="button" class="edit-button" onclick="enableEdit('name')">Edit</button> -->
-        </div>
-        <div class="form-group">
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" value="<?php echo isset($row['address']) ? $row['address'] : ''; ?>" readonly>
-            <!-- <button type="button" class="edit-button" onclick="enableEdit('address')">Edit</button> -->
-        </div>
-        <div class="form-group">
-            <label for="contact">Mobile:</label>
-            <input type="text" id="mobile" name="mobile" value="<?php echo isset($row['mobile']) ? $row['mobile'] : ''; ?>" readonly>
-            <!-- <button type="button" class="edit-button" onclick="enableEdit('mobile')">Edit</button> -->
-        </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="<?php echo isset($row['email']) ? $row['email'] : ''; ?>" readonly>
-            <!-- <button type="button" class="edit-button" onclick="enableEdit('email')">Edit</button> -->
-        </div>
-        
-        <div class="form-group">
-        </div>
-    </form>
-    <a href="<?php echo $_SESSION['usertype'] == 'farmer' ? 'home.php' : 'counsellor/view_predicament.php'; ?>" class="back-button">Back</a>
-
+<div class="box-container">
+    <div class="box">
+        <h1>Your Profile</h1>
+            <!-- <a href="home.php" class="back-button">Back</a> -->
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="<?php echo isset($row['name']) ? $row['name'] : ''; ?>" readonly>
+                <!-- <button type="button" class="edit-button" onclick="enableEdit('name')">Edit</button> -->
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" value="<?php echo isset($row['address']) ? $row['address'] : ''; ?>" readonly>
+                <!-- <button type="button" class="edit-button" onclick="enableEdit('address')">Edit</button> -->
+            </div>
+            <div class="form-group">
+                <label for="contact">Mobile:</label>
+                <input type="text" id="mobile" name="mobile" value="<?php echo isset($row['mobile']) ? $row['mobile'] : ''; ?>" readonly>
+                <!-- <button type="button" class="edit-button" onclick="enableEdit('mobile')">Edit</button> -->
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="<?php echo isset($row['email']) ? $row['email'] : ''; ?>" readonly>
+                <!-- <button type="button" class="edit-button" onclick="enableEdit('email')">Edit</button> -->
+            </div>
+        </form>
+        <a href="<?php echo $_SESSION['usertype'] == 'farmer' ? 'home.php' : 'counsellor/view_predicament.php'; ?>" class="back-button">Back</a>
+    </div>
 </div>

@@ -23,6 +23,7 @@
   h1 {
     text-align: center;
     color: #fff;
+    padding: 10px; /*new*/
   }
   
   .form-group {
@@ -44,6 +45,7 @@
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    margin: 5px;
   }
   
   .edit-button {
@@ -54,6 +56,11 @@
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
+  }
+
+  .edit-button:hover{
+    background-color: #03a686;
+    transform: scale(1.02);
   }
   
   input[type="submit"] {
@@ -68,6 +75,7 @@
   }
   
   input[type="submit"]:hover {
+    background-color: #03a686;
     transform: scale(1.02);
   }
   

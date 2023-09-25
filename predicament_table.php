@@ -59,6 +59,11 @@ if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
                             <td><?php echo $row['submitted_date']; ?></td>
 
                             <td>
+                                <form method="post" action="edit_predicament.php">
+                                    <input type="hidden" value="<?php echo $row['pid']; ?>" name="pid" />
+                                    <input type="submit"  value="Update" name="edit_predicament" />
+                                </form>
+
                                 <form method="post" action="predicament_table.php">
                                     <input type="hidden" value="<?php echo $row['pid']; ?>" name="pid" />
                                     <input type="submit" value="Delete" name="delete" />

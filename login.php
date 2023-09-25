@@ -62,50 +62,44 @@ if(isset($_POST['login'])){
     } 
 
 ?>
-        
-        <link rel="stylesheet" href="css/login.css">
+
+<link rel="stylesheet" href="css/login.css">
 
 <div class="log">
-  <div class="container">
-      <h1>Login</h1>
-      <?php if (isset($_GET['error'])) { ?>
-                <div class="error-message">
-                    Username or Password Invalid!
+    <div class="container">
+        <h1>Agrocouncil Login</h1>
+        <?php if (isset($_GET['error'])) { ?>
+        <div class="error-message">
+            Username or Password Invalid!
+        </div>
+        <?php } ?>
+        <form method="post" action="login.php" autocomplete="off">
+            <div class="group-login">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="group-login">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password "required>
+            </div>
+            <div class="user-selects">
+                <div class="farmer-part">  
+                    <input type="radio" name="userselects" id="farmer" value="farmer" checked>
+                    <label for="farmer">Farmer</label>
                 </div>
-            <?php } ?>
-      <form method="post" action="login.php" autocomplete="off">
-          <div class="form-group">
-              <label for="email">Email:</label>
-              <input type="text" id="email" name="email" placeholder="Enter your email" required>
-          </div>
-          <div class="form-group">
-              <label for="password">Password:</label>
-              <input type="password" id="password" name="password" placeholder="Enter your password "required>
-          </div>
-            <div>
-            <p >Forget Password? <a href="#">Click Here!</a></p>
-
-            </div>
-          <div class="user-selects">
-            <div class="farmer-part">  
-                <label for="farmer">Farmer</label>
-                <input type="radio" name="userselects" id="farmer" value="farmer" checked>
-            </div>
-            <div class="counsellor-part">
-                <label for="counsellor">Counsellor</label>
-                <input type="radio" name="userselects" id="counsellor" value="counsellor">
+                <div class="counsellor-part">
+                    <input type="radio" name="userselects" id="counsellor" value="counsellor">
+                    <label for="counsellor">Counsellor</label>
+                </div> 
             </div>
 
-          </div>
-          <div class="button-group">
-            <input type="submit" name="login" value="LOGIN">
-          </div>
-            <div>
-            <p>Don't have a account? <a href="registration.php">Register Here!!!</a> </p>
-
+            <span>Forget Password? <a href="#">Click Here!</a></span>
+            <div class="button-group">
+                <button type="submit" name="login" value="login">LOGIN</button>
             </div>
+            <span>Don't have an account? <a href="registration.php">Register Here!!!</a></span>
         </form>
-  </div>
-  </div>
+    </div>
+</div>
 
 

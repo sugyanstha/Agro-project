@@ -31,7 +31,7 @@
     <div class="container">
     <div class="login-form">
     <h2>ADMIN LOGIN PANEL</h2>
-    <form action="" method="post">
+    <form action="" method="post" autocomplete="off">
         <div class="input-field">
             <input type="text" placeholder="Admin Name" name="adminname">
         </div>

@@ -9,10 +9,10 @@
 <body>
 <section class="sub-header">
        <nav>
-        <a href=""><img src="img\mlogo.png" alt=""></a>
+        <a href="index.php"><img src="img/6835119.png" alt="agrocouncil"></a>
         <div class="nav-links">
             <ul>
-                <li><a href="">HOME</a></li>
+                <li><a href="index.php">HOME</a></li>
                 <li><a href="aboutus.php">ABOUT US</a></li>
                 <li><a href="">FAQ</a></li>
                 <li><a href="">CONTACT US</a></li>
