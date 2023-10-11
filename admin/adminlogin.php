@@ -1,24 +1,36 @@
 <?php
-   
-    if(isset($_POST['login'])){
-        $adminname=$_POST['adminname'];
-        $adminpassword=$_POST['adminpassword'];
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+// Database Connection
+$conn = new mysqli("localhost", "root", "", "agro_council");
+if ($conn->connect_error) {
+    die("Connection Error: " . $conn->connect_error);
+}
+session_start();
+if(isset($_POST['login']))
+{
+    $adminname = $_POST['adminname'];
+    $adminpassword = $_POST['adminpassword'];
+    
+    $sql = "SELECT * FROM admin WHERE adminname = '$adminname' and adminpassword = '$adminpassword'";
 
-        $conn=new mysqli("localhost", "root", "", "agro_council");
-        if($conn->connect_error){
-            die("Connection Error");
-        }
-        $sql="SELECT * FROM admin WHERE adminname='$adminname' and adminpassword='$adminpassword'";
-        $result=$conn->query($sql);
-        if($result->num_rows>0){
-            header("Location: admindashboard.php"); 
-            $_SESSION['adminname'] = $_POST['adminname'];
-        }
-        else{
-            echo"<script>alert('Incorrect Password');</script>";
-        }
+    $result = $conn->query($sql);
+    if($result->num_rows > 0){
+        $_SESSION['adminname'] = $adminname;
+
+        // For logout Purpose
+        $_SESSION['admin'] =  $_POST['adminname'];
+        // Redirect to the admin panel page
+        header ("Location: adminpanel.php");
+        exit();
+    }else{
+        // Redirect to the same login page with an error message
+        header("Location: adminlogin.php?error=1");
+        exit;
     }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

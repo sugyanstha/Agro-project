@@ -53,9 +53,9 @@ if (isset($_POST['edit'])) {
                 <h1>Edit Farm</h1>
                 <div>
                     <label for="farmarea" class="far">Farm Area</label>
-                    <input type="text" name="farmarea" value="<?php echo $farmarea; ?>" /><br>
+                    <input type="text" name="farmarea" value="<?php echo $farmarea; ?>" required/><br>
                     <label for="framunit">Farm Unit</label>
-                    <select name="farmunit" id="farea">
+                    <select name="farmunit" id="farea" required>
                         <option value="acers">Acers</option>
                         <option value="biga">Biga</option>
                         <option value="aana">Aana</option>
@@ -64,7 +64,7 @@ if (isset($_POST['edit'])) {
                 </div>
                 <div>
                     <label for="farmtype">Farm Type</label>
-                    <input type="text" name="farmtype" value="<?php echo $farmtype; ?>" /><br>
+                    <input type="text" name="farmtype" value="<?php echo $farmtype; ?>" required/><br>
                 </div>
                 <input type="hidden" value="<?php echo $id; ?>" name="fid">
                 <input type="submit" value="Update" name="edit_farm" />

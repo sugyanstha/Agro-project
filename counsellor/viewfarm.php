@@ -15,7 +15,8 @@ if ($conn->connect_error) {
 }
 
 // Fetch farms
-$sql = "SELECT * FROM farm ";
+// $sql = "SELECT * FROM farm ";
+$sql = "SELECT * FROM farm INNER JOIN farmer ON farm.farmer_id = farmer.id";
 $result = $conn->query($sql);
 ?>
 <!-- WHERE farmer_id = '" . $_SESSION['id'] . "' -->
@@ -26,11 +27,11 @@ $result = $conn->query($sql);
         <table class="fl-table">
             <tbody>
                 <tr>
-                    <th>SN</th>
-                    <th>Farmer ID</th>
-                    <th>Farm Area</th>
-                    <th>Farm Unit</th>
-                    <th>Farm Type</th>
+                    <th width=5%>SN</th>
+                    <th width=25%>Farmer Name</th>
+                    <th width=13%>Farm Area</th>
+                    <th width=10%>Farm Unit</th>
+                    <th width=20%>Farm Type</th>
                     <!-- <th>Action</th> -->
                 </tr>
                 <?php
@@ -40,7 +41,7 @@ $result = $conn->query($sql);
                         ?>
                         <tr>
                             <td><?php echo $i++; ?></td>
-                            <td><?php echo $row['farmer_id']; ?></td>
+                            <td><?php echo $row['name']; ?></td>
                             <td><?php echo $row['farm_area']; ?></td>
                             <td><?php echo $row['farm_unit']; ?></td>
                             <td><?php echo $row['farm_type']; ?></td>

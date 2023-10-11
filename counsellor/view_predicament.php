@@ -54,7 +54,9 @@ if(isset($_POST['submit'])){
 
 // Fetch Predicament
 if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
-    $sql = "SELECT * FROM predicament";
+    // $sql = "SELECT * FROM predicament";
+    $sql = "SELECT *, farmer.name as farmer_name FROM predicament INNER JOIN farmer ON predicament.farmer_id = farmer.id";
+
     $result = $conn->query($sql);
 }
 ?>
@@ -69,12 +71,12 @@ if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
         <table class="fl-table">
             <tbody>
                 <tr>
-                    <th>SN</th>
-                    <th>Farmer ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
+                    <th width=10% >SN</th>
+                    <th width=20% >Farmer Name</th>
+                    <th width=25% >Title</th>
+                    <th width=40% >Description</th>
                     <!-- <th>Submitted Date</th> -->
-                    <th>Action</th>
+                    <th width=10% >Action</th>
                 </tr>
                 <?php if (isset($result) && $result->num_rows > 0) { // Check if $result is set
                     $i = 1;
@@ -82,7 +84,7 @@ if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
                         ?>
                         <tr>
                             <td><?php echo $i++; ?></td>
-                            <td><?php echo $row['farmer_id']; ?></td>
+                            <td><?php echo $row['farmer_name']; ?></td>
                             <td><?php echo $row['title']; ?></td>
                             <td><?php echo $row['description']; ?></td>
                             <!-- <td><?php //echo $row['submitted_date']; ?></td> -->

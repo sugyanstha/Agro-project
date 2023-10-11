@@ -1,5 +1,4 @@
-
-<link rel="stylesheet" href="../css/adminMain.css">
+<link rel="stylesheet" href="../css/admin.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="../css/sweetAlert.css">
 <?php
@@ -8,8 +7,6 @@ $conn=new mysqli("localhost","root", "", "agro_council");
     if($conn->connect_error){
         die("Connection Error".$conn->connect_error);
     }
-  
-    // include '../admin/admindahboard.php';
   
 // Check if a button is selected and assign a class to highlight it
 $farmerSelected = isset($_POST['farmer']) ? 'selected' : '';
@@ -75,7 +72,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'delete' && isset($_POST['id
 
     <div class="table-container">
         <table>
-        <link rel="stylesheet" href="../admin/css/table.css">
+        <!-- <link rel="stylesheet" href="../admin/css/table.css"> -->
 
             <?php
                 $sql = "SELECT * FROM `$table`";
@@ -85,7 +82,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'delete' && isset($_POST['id
                     $columns = array_keys(mysqli_fetch_assoc($result));
                     mysqli_data_seek($result, 0);
 
-                    $excludedColumns = ['password', 'img_srcs', 'id', 'reset_otp_hash', 'reset_otp_expires_at'];
+                    $excludedColumns = ['password','id', 'reset_otp_hash', 'reset_otp_expires_at'];
 
                     echo "<tr><th>SN</th>";
                     foreach ($columns as $column) {

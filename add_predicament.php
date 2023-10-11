@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/sweetAlert.css">
+    <link rel="stylesheet" href="css/myfarm.css"> <!--CSS link for form-->
+    <title>Add Form</title>
+</head>
+<body>
+
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -19,6 +31,21 @@ if (isset($_POST['submit'])) {
     $farmer_id = $_POST['farmerid'];
     $title = $_POST['title'];
     $description = $_POST['description'];
+    $errors = [];
+
+    if (empty($title) || empty($description)) {
+        ?>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'All fields are required!',
+                showConfirmButton: true,
+                confirmButtonText: 'OK',
+            });
+        </script>
+        <?php
+    } else {
 
     $sql = "INSERT INTO predicament (farmer_id, title, description) VALUES ('$farmer_id', '$title', '$description')";
     $result = $conn->query($sql);
@@ -29,6 +56,7 @@ if (isset($_POST['submit'])) {
     } else {
         echo "Error: " . $conn->error;
     }
+}
 }
 ?>
 
@@ -54,3 +82,6 @@ if (isset($_POST['submit'])) {
         </form>
     </div>
 </div>
+
+</body>
+</html>

@@ -1,20 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/sweetAlert.css">
+    <link rel="stylesheet" href="css/myfarm.css"> <!--CSS link for form-->
+    <title>Add Form</title>
+</head>
+<body>
+
+
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 session_start();
 
-//Include File
+// Include File
 include('layout/header.php');
 // include('layout/left.php');
 
-//Database Connection
+// Database Connection
 $conn = new mysqli("localhost", "root", "", "agro_council");
 if ($conn->connect_error) {
     die("Connection Error: " . $conn->connect_error);
 }
-
-
 
 // Add farm
 if (isset($_POST['submit'])) {
@@ -23,21 +34,56 @@ if (isset($_POST['submit'])) {
     $farmunit = $_POST['farmunit'];
     $farmtype = $_POST['farmtype'];
 
-    $sql = "INSERT INTO farm (farm_area, farm_unit, farm_type, farmer_id) VALUES ('$farmarea', '$farmunit', '$farmtype', '$farmer_id')";
-    $result = $conn->query($sql);
-    if ($result) {
-        echo "<script>alert('Farm Inserted Successfully')</script>";
-        header("Location: home.php");
-        exit;
+    $errors = [];
+
+    if (empty($farmarea) || empty($farmunit) || empty($farmtype)) {
+        ?>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'All fields are required!',
+                showConfirmButton: true,
+                confirmButtonText: 'OK',
+            });
+        </script>
+        <?php
     } else {
-        echo "Error: " . $conn->error; // Display database error
+        $sql = "INSERT INTO farm (farm_area, farm_unit, farm_type, farmer_id) VALUES ('$farmarea', '$farmunit', '$farmtype', '$farmer_id')";
+        $result = $conn->query($sql);
+        if ($result) {
+            ?>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Successful',
+                    text: 'Farm Added!',
+                    showConfirmButton: true,
+                    confirmButtonText: 'OK',
+                }).then(function(){
+                    window.location.href = "home.php";
+                });
+            </script>
+
+            <?php
+
+        } else {
+            // echo "Error: " . $conn->error; // Display database error
+            echo "<script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Error: <?php echo $conn->error; ?>',
+                    });
+                  </script>";
+        }
+        }
     }
-}?>
+
+?>
 
 
-<link rel="stylesheet" href="css/myfarm.css"> <!--CSS link for form-->
 
-<?php if (isset($_POST['add'])) { ?>
     <div class="cont">
         <div id="right">
             <form action="" method="post">
@@ -46,7 +92,7 @@ if (isset($_POST['submit'])) {
                     <label for="farmarea" class="far">Farm Area</label>
                     <input type="text" name="farmarea" /><br>
                     <label for="farmunit">Farm Unit</label>
-                    <select name="farmunit" id="farea">
+                    <select name="farmunit" id="farea" >
                         <option value="acre">Acre</option>
                         <option value="biga">Biga</option>
                         <option value="aana">Aana</option>
@@ -63,4 +109,6 @@ if (isset($_POST['submit'])) {
             </form>
         </div>
     </div>
-<?php } ?>
+    
+</body>
+</html>

@@ -46,11 +46,11 @@ if(isset($_POST['add_guidelines'])) {
         <form action="" method="post">
             <div class="pre">
                 <label for="guidelines">Guidelines title</label>
-                <input type="text" name="title" /><br>
+                <input type="text" name="title" required/><br>
             </div>
             <div class="textbox">
                 <label for="description">Description</label>
-                <textarea name="description" id="description" placeholder="Enter Guidelines" cols="30" rows="10"></textarea>
+                <textarea name="description" id="description" placeholder="Enter Guidelines" cols="30" rows="10" required></textarea>
             </div>
             <input type="hidden" value="<?php echo $_SESSION['id']; ?>" name="counsellorid">
             <input type="hidden" value="<?php echo $pid; ?>" name="pid" />

@@ -55,11 +55,11 @@ if (isset($_POST['edit_predicament'])) {
         <form action="edit_predicament.php" method="post">
             <div class="pre">
                 <label for="predicament">Predicament title</label>
-                <input type="text" value="<?php echo $title;?>" name="title" id="title" /><br>
+                <input type="text" value="<?php echo $title;?>" name="title" id="title" required/><br>
             </div>
             <div class="textbox">
                 <label for="description">Description</label>
-                <textarea name="description" id="description" placeholder="Enter Guidelines" cols="30" rows="10"><?php echo $description;?></textarea>
+                <textarea name="description" id="description" placeholder="Enter Guidelines" cols="30" rows="10" required><?php echo $description;?></textarea>
             </div>
             <input type="hidden" value="<?php echo $id; ?>" name="pid">
             <input type="submit" value="Update" name="update"/>
