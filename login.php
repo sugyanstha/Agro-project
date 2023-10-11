@@ -4,6 +4,9 @@
 ?>
 
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 session_start();
 //check if the user is already logged in
 if(isset($_SESSION['email'])){
@@ -39,29 +42,28 @@ if(isset($_POST['login'])){
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $hashedPassword = $row['password'];
+        $hashedpassword = $row['password'];
     
-        if (password_verify($password, $hashedPassword)) {
+        if (password_verify($password, $hashedpassword)) {
             // Password matches, store user details in session
             $_SESSION['id'] = $row['id'];
             $_SESSION['email'] = $email;
             $_SESSION['usertype'] = $userselects;
     
-            if ($userselects == "farmer") {
-                header("location: home.php");
-            } elseif ($userselects == "counsellor") {
-                header("location: counsellor/view_predicament.php");
-            }
-            exit;
-        
-        } else {
-            header("Location: login.php?error=1");
-            exit;
+        if ($userselects == "farmer") {
+            header("location: home.php");
+        } elseif ($userselects == "counsellor") {
+            header("location: counsellor/view_predicament.php");
         }
+        exit;
     } else {
         header("Location: login.php?error=1");
         exit;
     }
+} else {
+    header("Location: login.php?error=1");
+    exit;
+}
     
 }
 ?>
@@ -72,7 +74,7 @@ if(isset($_POST['login'])){
         <h1>Agrocouncil Login</h1>
         <?php if (isset($_GET['error'])) { ?>
         <div class="error-message">
-            Username or Password Invalid!
+            Email or Password Invalid!
         </div>
         <?php } ?>
         <form method="post" action="login.php" autocomplete="off">
