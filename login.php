@@ -27,7 +27,7 @@ if(isset($_POST['login'])){
     }
 
     // Use prepared statements to prevent SQL injection
-    $sql = "";
+//    $sql="";
     if ($userselects == "farmer") {
         $sql = "SELECT * FROM farmer WHERE email = ?";
     } elseif ($userselects == "counsellor") {
