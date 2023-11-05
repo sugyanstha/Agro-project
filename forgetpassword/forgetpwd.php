@@ -5,12 +5,12 @@
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>    
-    <div class="log"> 
+    <div class="loggg"> 
         <div class="container">
             <h1>Forgot Password</h1>        
             <form id="forgotPasswordForm" action="send_resetpwd.php" method="post">
                 <div class="group-login" >
-                    <label for="email">Email:</label>
+                    <label for="email" class="labelll">Email:</label>
                     <input type="email" placeholder="Enter your email" name="email" id="email" required>
                 </div>    
                 <div class="user-selects">

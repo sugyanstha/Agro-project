@@ -27,6 +27,17 @@ body{
 }
 /* End */
 
+/* For Forget Password */
+.loggg{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  height: max-content;
+  margin: 0 auto;
+  padding: 170px;
+}
+/* End */
+
 .container {
   text-align: center;
   padding: 20px;
@@ -140,6 +151,7 @@ form a:hover {
   width: 100%;
   border: 2px solid #01896e;
   transition: background 0.5s;
+  cursor: pointer;
 }
 
 .user-selects label:hover{
@@ -166,4 +178,16 @@ form a:hover {
 
 span{
   color: #fff;
+}
+
+/* Forget Password */
+.back-button{
+  text-align: center;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.group-login .labelll input[type="email"]{
+  width: 50%
 }

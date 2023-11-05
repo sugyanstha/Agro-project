@@ -24,10 +24,10 @@ $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 $mail->Port = 587;
 
 // Your Gmail address (sender)
-$mail->Username = "agrocouncil1@gmail.com"; // Gmail address
+$mail->Username = "agrocouncil101@gmail.com"; // Gmail address 
 
 // Use the generated App Password for Gmail
-$password = "mtzvtmteckouphbk";
+$password = "atsoisjzkbsvatgl";
 $mail->Password = $password; // Replace with your App Password
 
 // Set the email format to HTML
