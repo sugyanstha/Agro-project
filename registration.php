@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php
 
     // Database connection
@@ -15,7 +16,7 @@ if(isset($_POST['signup'])){
     $email = strtolower($_POST['email']);
     $password = $_POST['password'];
     $userselects = $_POST['userselects'];
-    $table = ($userselects === "farmer") ? "farmer" : "counsellor";
+    $table = ($userselects === "farmer") ? "farmer" : "counsellor"; 
 
 
     // Validations
@@ -42,7 +43,7 @@ if(isset($_POST['signup'])){
 
     // Mobile number validation
     if (strlen($mobile) !== 10 || !is_numeric($mobile)) {
-        $errors[] = "Mobile number should be 10 digits only.";
+        $errors[] = "Mobile number should be numeric and 10 digits only.";
     }
 
     // Uniqye Key Validation 
@@ -63,6 +64,8 @@ if(isset($_POST['signup'])){
         if (!$stmt) {
             $errors[] = "Error in database connection.";
         } else {
+            //Set initial status
+            $status='Pending';  
             // Sanitize user inputs
             $name = mysqli_real_escape_string($conn, $name);
             $address = mysqli_real_escape_string($conn, $address);
@@ -76,8 +79,23 @@ if(isset($_POST['signup'])){
             // Bind parameters and execute
             $stmt->bind_param("sssss", $name, $address, $mobile, $email, $hashedPassword);
             if ($stmt->execute()) {
-                header("Location: login.php?success=1");
-                exit;// Make sure to exit after redirection
+                // Display a success message
+                $successMessage = ($userselects === "farmer") ?
+                "Your registration as a Farmer is successful." :
+                "Your registration as a Counsellor is pending approval. Wait for admin approval before logging in.";
+
+            echo '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Registration Successful",
+                        text: "' . $successMessage . '",
+                        showCloseButton: true,
+                    });
+                });
+            </script>';
+                // header("Location: login.php?success=1");
+                // exit;// Make sure to exit after redirection
             } else {
                 $errors[] = "An error occurred while processing your request. Please try again later.";
             }
@@ -104,7 +122,8 @@ if(isset($_POST['signup'])){
 }
 ?>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- <script src="validation.js"></script> -->
 <link rel="stylesheet" href="css/sweetAlert.css">
 <div class="logg">
     <div class="container">

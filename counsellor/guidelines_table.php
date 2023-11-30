@@ -86,7 +86,7 @@ if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
                     <?php }
                 } else { ?>
                     <tr>
-                        <td colspan="7">No Guidelines found.</td>
+                        <td colspan="8">No Guidelines found.</td>
                     </tr>
                 <?php } ?>
             </tbody>

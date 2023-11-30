@@ -7,7 +7,7 @@
 .admin-main{
     margin: 0 auto;
     width: 100%;
-    background-color: #292929;
+    background-color: #C4F4E7;
     padding: 13px 7%;
     height: 100vh;
     min-height: max-content;
@@ -17,7 +17,7 @@
 .table-container{
     flex: 1;
     border-radius: 10px;
-    background: #333333;
+    background: #39A6B0;
     box-shadow: 0 0 44px rgba(8, 7, 16, .6);
     overflow: hidden;
     margin: 10px 0;
@@ -29,11 +29,12 @@ table{
     width: 95%;
     border-collapse: collapse;
     margin: 0.8rem auto;
+    table-layout: fixed;
 }
 
 th{
     padding: 0.8rem 1rem;
-    background-color: #01896e;
+    background-color: #00636E;
 }
 
 h2, th{
@@ -51,31 +52,35 @@ td{
 }
 
 .td-center button{
-    color: rgb(0, 0, 0);
-    border: 0;
-    padding: 0.3125rem 0.4375rem;
+    display: inline-block;
+    padding: 10px 20px;
     font-size: 14px;
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
-    border-radius: .625rem;
+    border: none;
+    border-radius: 15px;
+    background-color: #294D61;
+    color: #fff; 
+    transition: background-color 0.3s ease;
 }
   
-.moreBtn button:hover{
-    background-color: rgb(3, 245, 3);
+.approveBtn button:hover{
+    background-color: #0F969C;
 }
   
 .deleteBtn button:hover {
-    background-color: rgb(254, 65, 65);
+    background-color: #cc1414;
 }
 
 /* Zebra pattern */
 table  tr:nth-child(odd){
-    background:#3d3d3d;
+    background: #00636E;
 }
 
 table tr:hover{
     transform: scale(1.02);
 }
-
 
 .head-table{
     text-align: center;
@@ -89,6 +94,7 @@ table tr:hover{
     padding: .5rem;
     border-radius: 10px;
     border: none;
+    cursor: pointer;
 }
 
 .head-table button:hover{
@@ -97,8 +103,9 @@ table tr:hover{
 }
 
 .admin-main .head-table button.selected {
-    background-color: #01896e;
+    background-color: #00636E;
     color: white;
+    cursor: pointer;
   }
 
 

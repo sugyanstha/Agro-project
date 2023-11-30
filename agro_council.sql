@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 11, 2023 at 11:47 AM
+-- Generation Time: Nov 30, 2023 at 04:09 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -51,19 +51,21 @@ CREATE TABLE `counsellor` (
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `mobile` bigint(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `reset_otp_hash` varchar(64) DEFAULT NULL,
-  `reset_otp_expires_at` datetime DEFAULT NULL
+  `reset_otp_expires_at` datetime DEFAULT NULL,
+  `status` varchar(255) DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `counsellor`
 --
 
-INSERT INTO `counsellor` (`id`, `name`, `address`, `mobile`, `email`, `password`, `reset_otp_hash`, `reset_otp_expires_at`) VALUES
-(1, 'sugyan', 'bkt', 9800000001, 'su@gmail.com', 'sugyan', NULL, NULL),
-(4, 'Ram ', 'BKT', 9999999999, 'ram@gmail.com', '$2y$10$a3PCcFMF90aau', NULL, NULL);
+INSERT INTO `counsellor` (`id`, `name`, `address`, `mobile`, `email`, `password`, `reset_otp_hash`, `reset_otp_expires_at`, `status`) VALUES
+(5, 'Sanjana Shilpakar', 'Kathmandu', 9841364517, 'sanjanashilpakar@gmail.com', '$2y$10$XzYVBKhUTSRj1', NULL, NULL, 'Approved'),
+(6, 'ram', 'bkt', 9800000000, 'ram@gmail.com', '$2y$10$NmNJtHtiRQ9IW53xJ4L4/uOEkiTn1UERS.M/.B3n1Cc3VNZFK7GI2', NULL, NULL, 'Approved'),
+(11, 'af', 'asdg', 1111111111, 'a@gmail.com', '$2y$10$gp.Lr8tnJK71Iv60uKe5jOXelzTOH/mzvXWWllnkGniME0BTgdiNa', NULL, NULL, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -84,9 +86,7 @@ CREATE TABLE `farm` (
 --
 
 INSERT INTO `farm` (`fid`, `farm_area`, `farm_unit`, `farm_type`, `farmer_id`) VALUES
-(3, '6ac', 'biga', 'wheat farm', 3),
-(7, '9', 'acers', 'Maize', 5),
-(11, '4', 'biga', 'wheat', 6);
+(14, '10', 'acre', 'pineapple farm', 14);
 
 -- --------------------------------------------------------
 
@@ -100,7 +100,7 @@ CREATE TABLE `farmer` (
   `address` varchar(50) NOT NULL,
   `mobile` bigint(20) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `reset_otp_hash` varchar(64) DEFAULT NULL,
   `reset_otp_expires_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -110,12 +110,7 @@ CREATE TABLE `farmer` (
 --
 
 INSERT INTO `farmer` (`id`, `name`, `address`, `mobile`, `email`, `password`, `reset_otp_hash`, `reset_otp_expires_at`) VALUES
-(3, 'Sugyan Shrestha', 'Bhaktapur', 9843929568, 'sugyanshrestha11@gmail.com', 'sugyanstha', NULL, NULL),
-(5, 'sugyansht', 'Bhaktapur', 9874561230, 's@gmail.com', '12345678', NULL, NULL),
-(6, 'sugyan', 'bkt', 1234567890, 'sugyan@gmail.com', 'Sugyan123', NULL, NULL),
-(7, 'Sanjana Shlipakar ', 'Kathmandu', 9841245678, 'sanjana@gmail.com', '$2y$10$MeYOiky6INpIh', NULL, NULL),
-(8, 'ram', 'Kathmandu', 9874561234, 'ram@gmail.com', '$2y$10$qjm39X/C2Cp5z', NULL, NULL),
-(9, 'dfbdb', 'sdhdghgd', 9877777777, 'su@gmail.com', '$2y$10$A0husXacGHqIg', NULL, NULL);
+(14, 'Sugyan Shrestha', 'Bhaktapur', 9843929568, 'sugyanshrestha11@gmail.com', '$2y$10$l7kPzIyZLMz7BPbRyUV2bu6r1KwoIJWPXQG3RKvijlKFeuqPEp/7e', '58260713aee2888c6eb3d06aea6b47d2d394f4e1eb60c1ccb712a5de5f42012c', '2023-11-27 10:04:08');
 
 -- --------------------------------------------------------
 
@@ -151,7 +146,7 @@ CREATE TABLE `predicament` (
 --
 
 INSERT INTO `predicament` (`pid`, `farmer_id`, `title`, `description`, `submitted_date`) VALUES
-(27, 5, 'Infection of Tuta Absoluta', 'Larva enters leaf steam, fruits. Eats Chlorophyll and turns whitish patch on leaf.', '2023-09-24 17:46:59');
+(30, 14, 'resources', 'seeds pugyaena\r\n', '2023-11-27 08:04:17');
 
 --
 -- Indexes for dumped tables
@@ -215,31 +210,31 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `counsellor`
 --
 ALTER TABLE `counsellor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `farm`
 --
 ALTER TABLE `farm`
-  MODIFY `fid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `fid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `farmer`
 --
 ALTER TABLE `farmer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `guidelines`
 --
 ALTER TABLE `guidelines`
-  MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `gid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `predicament`
 --
 ALTER TABLE `predicament`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables

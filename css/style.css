@@ -15,7 +15,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #4fc3a1;
+    background-color: #00636E;
     color: #fff;
     padding: 10px;
     height: 35px;
@@ -41,20 +41,21 @@ body{
 }
 
 #profile a:hover {
-    background-color: #fff;
-    color: #333;
+    background-color: #f44336;
+    color: #fff;
 }
 
 
 /* CSS for main section */
 #main {
     display: flex;
+    background-color: #C4F4E7;
     /* width: 80%; */
 }
 
 /* CSS for sidebar */
 #left {
-  background-color: #f1f1f1;
+  background-color: #39A6B0;
   width: 20%;
   padding: 20px;
   height: 100vh;
@@ -62,6 +63,10 @@ body{
   flex-direction: column;
   overflow: hidden;
   /* position: fixed; */
+}
+
+strong  a {
+  color: #333;
 }
 
 #left strong {
@@ -110,7 +115,7 @@ body{
 } */
 
 #left .ol_ol li:hover{
-  background-color: #594f8d;
+  background-color: #294D61;
   border-radius: 20px;
 }
     
@@ -220,7 +225,7 @@ body{
   opacity: 0;
   scale: 0.85;
   /* background: linear-gradient(#ea8d8d, #a890fe); */
-  background: #594f8d;
+  background: #00636E;
   transition: 0.3s;
 }
 
@@ -240,7 +245,7 @@ body{
 }
 
 .dropdown > .menu > a > p{
-  color: #141414;
+  color: #333;
   font-size: 16px;
   text-decoration: underline;
   padding: 10px;
@@ -248,7 +253,7 @@ body{
 
 .dropdown > .menu >a:hover{
   /* background: rgba(0 0 0 / 10%); */
-    background-color: #f7f7f7;
+    background-color: #C4F4E7;
 }
 
 /* CSS for footer section */
