@@ -33,6 +33,7 @@ if (isset($_POST['submit'])) {
     $description = $_POST['description'];
     $errors = [];
 
+    // Validate form inputs
     if (empty($title) || empty($description)) {
         ?>
         <script>
@@ -75,6 +76,7 @@ if (isset($_POST['submit'])) {
                 <label for="description">Description</label>
                 <textarea name="description" id="description" placeholder="Enter your predicament description" cols="30" rows="10"></textarea>
             </div>
+            <!-- Hidden input field to store the logged-in farmer's ID -->
             <input type="hidden" value="<?php echo $_SESSION['id']; ?>" name="farmerid">
             <input type="submit" value="Add Predicament" name="submit" /><br>
             <a href="predicament_table.php">Back</a>

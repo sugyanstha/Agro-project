@@ -14,8 +14,7 @@ if ($conn->connect_error) {
     die("Connection Error: " . $conn->connect_error);
 }
 
-// Fetch farms
-// $sql = "SELECT * FROM farm ";
+// Fetch farm details by joining 'farm' and 'farmer' tables based on 'farmer_id'
 $sql = "SELECT * FROM farm INNER JOIN farmer ON farm.farmer_id = farmer.id";
 $result = $conn->query($sql);
 ?>
@@ -37,6 +36,7 @@ $result = $conn->query($sql);
                 <?php
                 if ($result && $result->num_rows > 0) {
                     $i = 1;
+                    // Loop through each row of the result set
                     while ($row = $result->fetch_assoc()) {
                         ?>
                         <tr>

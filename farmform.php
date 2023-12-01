@@ -27,7 +27,7 @@ if ($conn->connect_error) {
     die("Connection Error: " . $conn->connect_error);
 }
 
-// Add farm
+// Add farm when the form is submitted
 if (isset($_POST['submit'])) {
     $farmer_id = $_POST['farmerid'];
     $farmarea = $_POST['farmarea'];
@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
     $farmtype = $_POST['farmtype'];
 
     $errors = [];
-
+  // Check if any of the required fields is empty
     if (empty($farmarea) || empty($farmunit) || empty($farmtype)) {
         ?>
         <script>
@@ -49,6 +49,7 @@ if (isset($_POST['submit'])) {
         </script>
         <?php
     } else {
+        // Insert farm data into the database
         $sql = "INSERT INTO farm (farm_area, farm_unit, farm_type, farmer_id) VALUES ('$farmarea', '$farmunit', '$farmtype', '$farmer_id')";
         $result = $conn->query($sql);
         if ($result) {
@@ -83,7 +84,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 
-
+<!-- HTML form for adding a farm -->
     <div class="cont">
         <div id="right">
             <form action="" method="post">
