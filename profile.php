@@ -57,47 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (empty($errors)) {
-        // Check if a new image is selected
-        if (!empty($_FILES['profile_pic']['name'])) {
-            // Validate and process the image upload
-            $allowedExtensions = ['jpg', 'jpeg', 'png'];
-            $uploadDirectory = 'img/uploads/';
-        //    /sajdbkjsafbkjsdfbkjdbsfkjsbdfkjbsdfkjbdsfk 
-            $imgName = $_FILES['profile_pic']['name'];
-            $imgExtension = pathinfo($imgName, PATHINFO_EXTENSION);
-        
-            if (!in_array($imgExtension, $allowedExtensions)) {
-                $errors[] = "Invalid image format. Allowed formats: JPG, JPEG, PNG.";
-            } else {
-                // Upload the new image and get the file path
-                $uploadedFilePath = $uploadDirectory . $imgName;
-        
-                if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $uploadedFilePath)) {
-                    // Image uploaded successfully, prepare to update database
-                    if ($userSelects == "farmer") {
-                        $updateSql = "UPDATE farmer SET img_srcs = '$uploadedFilePath',";
-                    } elseif ($userSelects == "counsellor") {
-                        $updateSql = "UPDATE counsellor SET img_srcs = '$uploadedFilePath',";
-                    }
-                } else {
-                    // Failed to upload the new image
-                    // Redirect to the profile page with an error message
-                    // header("Location: profile.php?error=2");
-                    // Redirect to the profile page with a specific error message
-                    header("Location: profile.php?error=imageUploadError");
-                    exit;
-                }
-            }
-        } else {
-            // No new image selected, update other fields only
-            if ($userSelects == "farmer") {
-                $updateSql = "UPDATE farmer SET";
-            } elseif ($userSelects == "counsellor") {
-                $updateSql = "UPDATE counsellor SET";
-            }
-        }
-        
-        // Add other fields to the update query
+        // Add fields to the update query
         $updateSql .= " name = '$name', address = '$address', mobile = '$mobile', email = '$email'";
         
         if (!empty($newPassword)) {
@@ -115,11 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['address'] = $address;
             $_SESSION['mobile'] = $mobile;
             $_SESSION['email'] = $email;
-            // Update the session variable for the profile picture
-            if (!empty($uploadedFilePath)) {
-                $_SESSION['profilePic'] = $uploadedFilePath;
-            }
-            
             // Redirect to the profile page with a success message
             header("Location: profile.php?success=1");
             exit;
