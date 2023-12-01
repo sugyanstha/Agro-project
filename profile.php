@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Validate and process the image upload
             $allowedExtensions = ['jpg', 'jpeg', 'png'];
             $uploadDirectory = 'img/uploads/';
-        
+        //    /sajdbkjsafbkjsdfbkjdbsfkjsbdfkjbsdfkjbdsfk 
             $imgName = $_FILES['profile_pic']['name'];
             $imgExtension = pathinfo($imgName, PATHINFO_EXTENSION);
         
