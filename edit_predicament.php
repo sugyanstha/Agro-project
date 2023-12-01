@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 
 
-// View guidelines details
+// View Predicament details
 if (isset($_POST['update'])) {
     $id=$_POST['pid'];
     $title = $_POST['title'];
