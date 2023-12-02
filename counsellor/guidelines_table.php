@@ -52,8 +52,8 @@ if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
                 <tr>
                     <th>SN</th>
                     <th>Counsellor ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
+                    <th >Title</th>
+                    <th >Description</th>
                     <th>Submitted Date</th>
                     <th>Predicament ID</th>
                     <th>Farmer ID</th>
