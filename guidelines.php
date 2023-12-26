@@ -14,7 +14,7 @@ if ($conn->connect_error) {
     die("Connection Error: " . $conn->connect_error);
 }
 
-// Fetch Guidelines
+// Fetch Guidelines based on Counsellor ID stored in the session
 if (isset($_SESSION['id'])) { // Check if $_SESSION['id'] is set
     $sql = "SELECT * FROM guidelines WHERE counsellor_id = '" . $_SESSION['id'] . "'";
     $result = $conn->query($sql);

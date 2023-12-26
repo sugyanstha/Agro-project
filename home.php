@@ -1,14 +1,12 @@
 <?php
 include('layout/header.php');
 
-// Check if the user is logged in (you should replace this with your actual authentication check)
-// $isLoggedIn = true; // Set this to true if the user is logged in
+// Check if the user is logged in; redirect to login page if not logged in
 session_start();
 if(!isset($_SESSION['email']))
 {
    header("location:login.php");
 }
-// $name=$row['name'];
 $email=$_SESSION['email'];
 
 // Set the active page based on the user's login status
@@ -21,15 +19,13 @@ include('layout/left.php');
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// session_start();
-
 // Database connection
 $conn = new mysqli("localhost", "root", "", "agro_council");
 if ($conn->connect_error) {
     die("Connection Error: " . $conn->connect_error);
 }
 
-// Delete record
+// Delete record if the delete form is submitted
 if (isset($_POST['delete'])) {
     $id = $_POST['fid'];
     $sql = "DELETE FROM farm WHERE fid = '$id'";
@@ -43,7 +39,7 @@ if (isset($_POST['delete'])) {
 
 
 
-// Fetch farms
+// Fetch farms for the logged-in user
 $sql = "SELECT * FROM farm WHERE farmer_id = '" . $_SESSION['id'] . "'";
 $result = $conn->query($sql);
 ?>

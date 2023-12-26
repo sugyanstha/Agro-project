@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 
 
 
-// View guidelines details
+// Edit farm 
 if (isset($_POST['update'])) {
     $id=$_POST['pid'];
     $title = $_POST['title'];
@@ -30,7 +30,7 @@ if (isset($_POST['update'])) {
     }
 }
 
-// Edit farm
+// View Predicament details
 if (isset($_POST['edit_predicament'])) {
     $id = $conn->real_escape_string($_POST['pid']);
     $sql = "SELECT title, description FROM predicament WHERE pid='$id'";

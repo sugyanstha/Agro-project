@@ -52,7 +52,17 @@ if (isset($_POST['action']) && $_POST['action'] === 'delete' && isset($_POST['id
     $deleteTable = $_POST['deleteTable'];
 
     // Construct the SQL DELETE query using the correct table name
-      if (!empty($deleteTable)) {
+       if (!empty($deleteTable)) {
+        // Check if the farmer to be deleted is logged in; if yes, destroy the session
+        $checkSessionSql = "SELECT id FROM `$deleteTable` WHERE id = $id";
+        $checkSessionResult = mysqli_query($conn, $checkSessionSql);
+
+        if ($checkSessionResult && mysqli_num_rows($checkSessionResult) > 0) {
+            // Destroy the session if the logged-in farmer is to be deleted
+            session_destroy();
+        }
+
+        // Construct the SQL DELETE query using the correct table name
         if ($deleteTable === 'farmer') {
             $sql = "DELETE FROM `$deleteTable` WHERE id = $id";
         } elseif ($deleteTable === 'counsellor') {
@@ -61,13 +71,13 @@ if (isset($_POST['action']) && $_POST['action'] === 'delete' && isset($_POST['id
             $sql = "DELETE FROM `$deleteTable` WHERE gid = $id";
         }
 
+        // Execute the DELETE query
         $result = mysqli_query($conn, $sql);
     
 }
 }
-
-
 ?>
+
 <div class="admin-main">
     <div class="head-table">
     <form action="?selected=farmer" method="POST">
